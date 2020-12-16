@@ -1,3 +1,4 @@
+from Board import board
 class pieces:
     def __init__(self, type):
         piece_types = ["dog", "hat", "car", "ship", "wheelbarrow", "shoe"]
@@ -11,7 +12,7 @@ class pieces:
         self.row_coef = 0
         self.col_coef = 1
 
-    def move(self):
+    def move(self, board):
         if self.position[0] == 0 and self.position[1] == 0:
             self.row_coef = 0
             self.col_coef = 1
