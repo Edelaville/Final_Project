@@ -15,7 +15,9 @@ class board:
 
     def printBoard(self):
         for x in self.board:
-            print(x)
+            for y in range(11):
+                print(x[y].__str__(), end = " ")
+            print(" ")
 
     def editBoard(self, x, y, change):
         self.board[x][y] = change
