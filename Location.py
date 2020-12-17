@@ -13,3 +13,6 @@ class location:
 
     def getPrice(self):
         return self.price
+
+    def __str__(self):
+        return self.name
