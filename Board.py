@@ -3,21 +3,29 @@ from Properties import Properties
 from Utility import utility
 from ChanceChest import ChanceChest
 from Railroads import Railroads
+import random
 
 
 class board:
     def __init__(self):
         self.board = []
-        self.board.append([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
+        self.board.append(["", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
         for x in range(9):
-            self.board.append([" ", "X", "X", "X", "X", "X", "X", "X", "X", "X", " "])
+            self.board.append([" ", "          X          ", "          X          ", "          X          ", "          X          ", "          X          ", "          X          ", "          X          ", "          X          ", "          X          ", " "])
         self.board.append([" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "])
 
     def printBoard(self):
         for x in self.board:
             for y in range(11):
+                len = x[y].__str__().__len__()
+                prelen = (21 - len) // 2
+                for z in range(prelen):
+                    print(" ", end = " ")
                 print(x[y].__str__(), end = " ")
             print(" ")
+
+    def returnSpace(self, x, y):
+        return self.board[x][y]
 
     def editBoard(self, x, y, change):
         self.board[x][y] = change
@@ -64,3 +72,18 @@ class board:
         self.board[3][0] = Properties("Park Place", "Dark Blue", 350, 35, 200, 175, 500, 1100, 1300, 1500)
         self.board[2][0] = location("Luxury Tax", "Tax", 100)
         self.board[1][0] = Properties("Boardwalk", "Dark Blue", 400, 50, 200, 200, 600, 1400, 1700, 2000)
+
+    def diceRoll(self):
+        x = random.randint(1, 6)
+        y = random.randint(1, 6)
+        return x+y
+
+    def moveOnBoard(self, player):
+        numOfMoves = self.diceRoll()
+        print("Player roll: " + str(numOfMoves))
+        for x in range(numOfMoves):
+            player.getPiece().move(self)
+        return player.getPiece().getPosition()
+
+
+
