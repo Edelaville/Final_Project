@@ -12,6 +12,9 @@ class pieces:
         self.row_coef = 0
         self.col_coef = 1
 
+    def getPosition(self):
+        return self.position
+
     def move(self, board):
         if self.position[0] == 0 and self.position[1] == 0:
             self.row_coef = 0
