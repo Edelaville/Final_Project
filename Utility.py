@@ -1,4 +1,5 @@
 import random
+from Location import location
 
 class utility(location):
 
@@ -15,8 +16,9 @@ class utility(location):
     def getPrice(self):
         return self.price
 
-    def getRent(self):
+    def getRent(self, player):
         diceRoll = random.randint(1, 6)
+        print("The dice roll for the payment is " + str(diceRoll))
         if self.both:
             rent = diceRoll * 10
         else:
