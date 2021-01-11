@@ -18,7 +18,7 @@ class Railroads(location):
     def getPrice(self):
         return self.price
 
-    def getRent(self, player):
+    def getRent(self):
         count = 0
         for x in player.properties:
             if x.getType() == "Railroad":
